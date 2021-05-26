@@ -1,5 +1,12 @@
 <h1><%= @restaurant.name %></h1>
 <h2>Find them: <%= @restaurant.address %> | <%= @restaurant.phone_number %>
 <h3> Cuisine: <%= (@restaurant.category).capitalize %></h3>
-<%= link_to "Add a review", new_restaurant_review_path(@restaurant) %>
-<%= link_to "Back to restaurants", restaurants_path %>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<%= link_to "Back to restaurants", restaurants_path, class: "btn btn-primary" %>
